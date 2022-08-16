@@ -7,7 +7,7 @@ import axios from 'axios';
 //Style
 import 'react-datepicker/dist/react-datepicker.css';
 
-export default function DataPickersExample() {
+const DataPickersEssai2 = () => {
   //ETAT
   ////////////////////////////////////////////////////////////////////////
   const { register, handleSubmit, control } = useForm();
@@ -15,8 +15,6 @@ export default function DataPickersExample() {
   const onSubmit = (data) => {
     console.log(data.date);
   };
-
-  const ref = React.createRef();
 
   //FETCH
   ////////////////////////////////////////////////////////////////////////
@@ -33,7 +31,6 @@ export default function DataPickersExample() {
             {...register('date')}
             render={({ field }) => (
               <ReactDatePicker
-                ref={ref}
                 onChange={(e) => field.onChange(e)}
                 selected={field.value}
                 name='ReactDatepicker'
@@ -47,4 +44,5 @@ export default function DataPickersExample() {
       </div>
     </form>
   );
-}
+};
+export default DataPickersEssai2;

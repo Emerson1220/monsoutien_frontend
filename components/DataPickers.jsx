@@ -1,56 +1,67 @@
-import React, { useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
+
 import DatePicker from 'react-datepicker';
-
 import 'react-datepicker/dist/react-datepicker.css';
-
-// CSS Modules, react-datepicker-cssmodules.css
-// import 'react-datepicker/dist/react-datepicker-cssmodules.css';
+import axios from 'axios';
 
 const DataPickers = () => {
-  //State Date Advance
-  const [startDate, setStartDate] = useState(new Date());
+  const [date, setDate] = useState(new Date());
+  //Error
+  const [errorBooking, setErrorBooking] = useState(null);
 
-  //Soumission formulaire
-  const handleSubmit = (event) => {
-    console.log(submit);
-    event.preventDefault();
+  const onChange = (date) => {
+    setDate(date);
   };
 
-  console.log(startDate);
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    // alert(date);
+    console.log(date);
+
+    try {
+      const response = await axios.post(
+        'http://localhost:1337/api/bookings',
+        {
+          data: {
+            date: date,
+          },
+        }
+      );
+      console.log(response);
+    } catch (error) {
+      setErrorBooking(error.message);
+      alert(
+        'Date et horaires non disponible - Veuillez rentrer une nouvelle date'
+      );
+    }
+  };
 
   return (
-    //State Date Advance
-    <div className='container'>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor=''>
-          {' '}
+    <div className='calendarApp mt-5'>
+      <form onSubmit={onSubmit}>
+        <div className='input-group mb-3'>
           <DatePicker
+            // locale='enUS'
+            className='form-control'
+            selected={date}
+            onChange={onChange}
+            value={date}
+            name='selectDate'
             showTimeSelect
-            minDate={new Date()}
-            selected={startDate}
-            onChange={(date) => setStartDate(date)}
-            isClearable
-            placeholderText='I have been cleared!'
+            timeIntervals={60}
+            timeFormat='HH:mm'
+            timeCaption='time'
             dateFormat='MMMM d, yyyy h:mm aa'
           />
-        </label>
-
-        <button type='submit'>Submit</button>
+          <button
+            className='btn btn-outline-primary'
+            id='button-addon2'
+          >
+            Valider
+          </button>
+        </div>
       </form>
     </div>
-
-    //State Date basics
-    // <div className='container'>
-    //   <DatePicker
-    //     showTimeSelect
-    //     minDate={new Date()}
-    //     selected={startDate}
-    //     onChange={(date) => setStartDate(date)}
-    //     isClearable
-    //     placeholderText='I have been cleared!'
-    //     dateFormat='MMMM d, yyyy h:mm aa'
-    //   />
-    // </div>
   );
 };
 

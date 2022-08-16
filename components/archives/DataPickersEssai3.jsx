@@ -5,14 +5,14 @@ import ReactDatePicker from 'react-datepicker';
 import axios from 'axios';
 
 //Components
-import ButtonsResult from '../components/ButtonsResult';
+import ButtonsResult from '../ButtonsResult';
 
 //Style
 import 'react-datepicker/dist/react-datepicker.css';
 
 let renderCount = 0;
 
-export default function DataPickersExample(props) {
+export default function DataPickersEssai3(props) {
   //ETAT
   ////////////////////////////////////////////////////////////////////////
   const { handleSubmit, control } = useForm({});
@@ -40,6 +40,7 @@ export default function DataPickersExample(props) {
     };
     fetchData();
   }, []);
+  console.log(data.ReactDatepicker);
 
   return (
     <form
