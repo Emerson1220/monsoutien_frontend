@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const BookingList = ({ bookings, error }) => {
@@ -6,31 +6,48 @@ const BookingList = ({ bookings, error }) => {
   //     console.log(response.data);
   //   });
 
-  console.log(bookings);
+  //   if (error) {
+  //     return <div>An error occured: {error.message}</div>;
+  //   }
 
-  if (error) {
-    return <div>An error occured: {error.message}</div>;
-  }
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    fetch('http://localhost:1337/api/bookings')
+      .then((res) => res.json())
+      .then((data) => {
+        setData(data);
+        console.log(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   return (
     <div>
-      {' '}
       <ul>
-        {bookings.map((booking) => (
-          <li key={booking.id}>{booking.date}</li>
+        {data.map((booking) => (
+          <li key={booking.id}>{booking.attributes.date}</li>
         ))}
       </ul>
+      {/* <ul>
+        {data.map((booking) => (
+          <li key={booking.id}>{booking.attributes.date}</li>
+        ))}
+      </ul> */}
     </div>
   );
 };
 
-BookingList.getInitialProps = async (ctx) => {
-  try {
-    const res = await axios.get('http://localhost:1337/api/bookings');
-    const bookings = res.data;
-    return { bookings };
-  } catch (error) {
-    return { error };
-  }
-};
+// BookingList.getInitialProps = async (ctx) => {
+//   try {
+//     const res = await axios.get('http://localhost:1337/api/bookings');
+//     const bookings = res.data.data;
+//     return { bookings };
+//   } catch (error) {
+//     return { error };
+//   }
+// };
 
 export default BookingList;
