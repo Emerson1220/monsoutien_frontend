@@ -1,31 +1,16 @@
-import axios from 'axios';
+import { getBookings } from '../utils/api';
+import BookingListComponents from '../components/BookingListComponents';
 
-const Home = ({ bookings, error }) => {
-  if (error) {
-    return <div>An error occured: {error.message}</div>;
-  }
+const EssaiPage = ({ bookings }) => {
   return (
-    <ul>
-      {bookings.map((booking) => (
-        <li key={booking.id}>
-          {booking.attributes.date}
-          <br />
-          {booking.id}
-        </li>
-      ))}
-    </ul>
+    <div>
+      <BookingListComponents bookings={bookings} />
+    </div>
   );
 };
 
-Home.getInitialProps = async (ctx) => {
-  try {
-    const res = await axios.get('http://localhost:1337/api/bookings');
-    const bookings = res.data.data;
-    console.log(bookings);
-    return { bookings };
-  } catch (error) {
-    return { error };
-  }
-};
-
-export default Home;
+export async function getStaticProps({ params }) {
+  const bookings = await getBookings(params);
+  return { props: { bookings } };
+}
+export default EssaiPage;

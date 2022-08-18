@@ -17,6 +17,10 @@ a {
 }
 
 .container {
-  width: 20%;
+  width: 50%;
   margin: auto;
+}
+
+.red {
+  color: red;
 }
