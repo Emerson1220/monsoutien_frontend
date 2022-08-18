@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 export function getStrapiURL(path) {
   return `${
     process.env.NEXT_PUBLIC_STRAPI_API_URL ||
@@ -5,18 +7,34 @@ export function getStrapiURL(path) {
   }${path}`;
 }
 
-// Helper to make GET requests to Strapi
-export async function fetchAPI(path) {
-  const requestUrl = getStrapiURL(path);
-  const response = await fetch(requestUrl);
-  const data = await response.json();
-  return data;
+// GET API FUNCTION
+export async function fetchGetAPI(path) {
+  try {
+    const requestUrl = getStrapiURL(path);
+    // const response = await fetch(requestUrl);
+    const response = await axios.get(requestUrl);
+    // const data = await response.json();
+    const data = response.data;
+    return data;
+  } catch (error) {
+    return error;
+  }
 }
 
+// FETCH GET BOOKING
 export async function getBookings() {
-  const bookings = await fetchAPI('/bookings');
-
+  const bookings = await fetchGetAPI('/bookings');
   return bookings;
+}
+
+// FETCH GET PRODUCT
+export async function getProducts() {
+  const products = await fetchGetAPI('/products');
+  return products;
+}
+export async function getProduct(slug) {
+  const products = await fetchGetAPI(`/products?slug=${slug}`);
+  return products?.[0];
 }
 
 // export async function getCategory(slug) {

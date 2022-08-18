@@ -1,13 +1,10 @@
-import React, { useRef, useState, useEffect } from 'react';
-
+import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import axios from 'axios';
 
 const DataPickers = () => {
   const [date, setDate] = useState(new Date());
-  //Error
-  const [errorBooking, setErrorBooking] = useState(null);
 
   const onChange = (date) => {
     setDate(date);
@@ -15,7 +12,7 @@ const DataPickers = () => {
 
   const onSubmit = async (event) => {
     event.preventDefault();
-    // alert(date);
+    alert(date);
     console.log(date);
 
     try {
@@ -37,12 +34,12 @@ const DataPickers = () => {
   };
 
   return (
-    <div className='calendarApp mt-5'>
+    <>
       <form onSubmit={onSubmit}>
-        <div className='input-group mb-3'>
+        <div>
           <DatePicker
             // locale='enUS'
-            className='form-control'
+            className=''
             selected={date}
             onChange={onChange}
             value={date}
@@ -51,17 +48,18 @@ const DataPickers = () => {
             timeIntervals={60}
             timeFormat='HH:mm'
             timeCaption='time'
-            dateFormat='MMMM d, yyyy h:mm aa'
+            dateFormat='MMMM d, yyyy hh:mm Pp'
+
+            //Time range à configurer
+            //       minTime={setHours(setMinutes(new Date(), 0), 17)}
+            // maxTime={setHours(setMinutes(new Date(), 30), 20)}
           />
-          <button
-            className='btn btn-outline-primary'
-            id='button-addon2'
-          >
+          <button className='' id=''>
             Valider
           </button>
         </div>
       </form>
-    </div>
+    </>
   );
 };
 

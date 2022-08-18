@@ -1,10 +1,9 @@
 import React from 'react';
 
 const BookingListComponents = ({ bookings }) => {
-  console.log(bookings.data);
   return (
-    <div className='container'>
-      <h1>Bookings data</h1>
+    <>
+      <h2>Bookings data</h2>
       <ul>
         {bookings.data.map((booking, id) => (
           <li key={id}>
@@ -14,7 +13,7 @@ const BookingListComponents = ({ bookings }) => {
           </li>
         ))}
       </ul>
-    </div>
+    </>
   );
 };
 
