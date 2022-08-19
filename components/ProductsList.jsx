@@ -19,10 +19,6 @@ const ProductsList = ({ products }) => {
               <h4>{_product.attributes.title}</h4>
               <h4>{_product.attributes.price}</h4>
               <h4>{_product.attributes.description}</h4>
-              <h4>{_product.attributes.image.data.attributes.url}</h4>
-              <h4>
-                {_product.attributes.media.data.attributes.height}
-              </h4>
               <ImageNext
                 width={
                   _product.attributes.media.data.attributes.width

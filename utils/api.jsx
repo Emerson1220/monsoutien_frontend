@@ -35,6 +35,7 @@ export async function getProducts() {
 }
 export async function getProduct(slug) {
   const products = await fetchGetAPI(`/products?slug=${slug}`);
+  console.log(products);
   return products?.[0];
 }
 

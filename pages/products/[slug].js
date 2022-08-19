@@ -16,8 +16,8 @@ const ProductPage = ({ product }) => {
       <Head>
         <title>{product.title} product</title>
       </Head>
-      <div>{/* <NextImage media={product.image} /> */}</div>
-      <div>
+      <h1>{product.title} </h1>
+      {/* <div>
         <div>
           <h4>
             {product.title} - ${product.price}
@@ -47,26 +47,26 @@ const ProductPage = ({ product }) => {
             </div>
           </div>
         )}
-      </div>
+      </div> */}
     </div>
   );
 };
 
 export default ProductPage;
 
-export async function getStaticProps({ params }) {
-  const product = await getProduct(params.slug);
-  return { props: { product } };
-}
-
 export async function getStaticPaths() {
   const products = await getProducts();
   return {
-    paths: products.data.map((_product) => {
-      return {
-        params: { slug: _product.slug },
-      };
-    }),
-    fallback: true,
+    paths: products.data.map((product) => ({
+      params: {
+        slug: product.attributes.slug,
+      },
+    })),
+    fallback: false,
   };
+}
+
+export async function getStaticProps({ params }) {
+  const product = await getProduct(params.slug);
+  return { props: { product } };
 }
