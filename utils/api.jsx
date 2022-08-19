@@ -6,7 +6,7 @@ export function getStrapiURL(path) {
     'http://localhost:1337/api'
   }${path}`;
 }
-
+////////////////////////////////////////////////////////////////
 // GET API FUNCTION
 export async function fetchGetAPI(path) {
   try {
@@ -29,12 +29,19 @@ export async function getBookings() {
 
 // FETCH GET PRODUCT
 export async function getProducts() {
-  const products = await fetchGetAPI('/products');
+  // const products = await fetchGetAPI('/products');
+  const products = await fetchGetAPI('/products?populate=*');
   return products;
 }
 export async function getProduct(slug) {
   const products = await fetchGetAPI(`/products?slug=${slug}`);
   return products?.[0];
+}
+
+// FETCH GET IMAGES
+export async function getImages() {
+  const images = await fetchGetAPI('/products?populate=*');
+  return images;
 }
 
 // export async function getCategory(slug) {
