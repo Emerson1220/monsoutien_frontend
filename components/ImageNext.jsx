@@ -11,7 +11,8 @@ const ImageNext = ({ url, width, height, alternativeText }) => {
       height={height}
       alt={alternativeText || ''}
       quality={75}
-      loading='lazy'
+      // loading='lazy'
+      priority
     />
   );
 };
