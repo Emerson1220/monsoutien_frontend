@@ -33,10 +33,16 @@ export async function getProducts() {
   const products = await fetchGetAPI('/products?populate=*');
   return products;
 }
-export async function getProduct(slug) {
-  const products = await fetchGetAPI(`/products?slug=${slug}`);
-  console.log(products);
-  return products?.[0];
+
+export async function getProductsId(id) {
+  const productsId = await fetchGetAPI(`/products?id=${id}`);
+  // const productsId = await fetchGetAPI(`/products/id`);
+  // console.log(productsId.data);
+  return productsId;
+}
+export async function getProductsSlug(slug) {
+  const productsSlug = await fetchGetAPI(`/products?slug=${slug}`);
+  return productsSlug;
 }
 
 // FETCH GET IMAGES

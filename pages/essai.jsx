@@ -1,5 +1,10 @@
 //Utils
-import { getBookings, getProducts, getImages } from '../utils/api';
+import {
+  getBookings,
+  getProducts,
+  getImages,
+  getProductsSlug,
+} from '../utils/api';
 //Components
 import BookingListComponents from '../components/BookingListComponents';
 import PostInfo from '../components/PostInfo';
@@ -22,6 +27,7 @@ export async function getStaticProps({ params }) {
   const bookings = await getBookings(params);
   const products = await getProducts(params);
   const images = await getImages(params);
+  const slug = await getProductsSlug(params);
 
   return {
     props: {
