@@ -35,7 +35,9 @@ export async function getProducts() {
 }
 
 export async function getProductsId(id) {
-  const productsId = await fetchGetAPI(`/products?id=${id}`);
+  const productsId = await fetchGetAPI(
+    `/products/${id}?populate=%2A`
+  );
   // const productsId = await fetchGetAPI(`/products/id`);
   // console.log(productsId.data);
   return productsId;

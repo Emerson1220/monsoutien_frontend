@@ -24,14 +24,14 @@ export default function product({ product }) {
 
 export async function getServerSideProps(context) {
   const { id } = context.query;
-  //   const data = await getProductsId({ id });
+  const dataId = await getProductsId(id);
   //   console.log(data.data);
 
   //Fetch ID
-  const resId = await fetch(
-    `http://localhost:1337/api/products/${id}?populate=%2A`
-  );
-  const dataId = await resId.json();
+  // const resId = await fetch(
+  //   `http://localhost:1337/api/products/${id}?populate=%2A`
+  // );
+  // const dataId = await resId.json();
 
   return {
     props: {
