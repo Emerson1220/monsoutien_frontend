@@ -1,24 +1,22 @@
 //Utils
-import {
-  getBookings,
-  getProducts,
-  getImages,
-  getProductsSlug,
-} from '../utils/api';
+import { getBookings, getProducts, getImages } from '../utils/api';
+
 //Components
 import BookingListComponents from '../components/BookingListComponents';
 import PostInfo from '../components/PostInfo';
 import DataPickers from '../components/DataPickers';
 import ProductsList from '../components/ProductsList';
+import CardSection from '../components/CardSection';
 
 const EssaiPage = ({ bookings, images, products }) => {
   return (
     <div>
       <h1>Essai Page</h1>
-      <BookingListComponents bookings={bookings} />
+      {/* <BookingListComponents bookings={bookings} />
       <PostInfo />
       <DataPickers />
-      <ProductsList products={products} images={images} />
+      <ProductsList products={products} images={images} /> */}
+      <CardSection />
     </div>
   );
 };
