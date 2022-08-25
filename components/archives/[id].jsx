@@ -1,6 +1,6 @@
 import React from 'react';
 import { getProductsId } from '../../utils/api';
-import ImageNext from '../../components/ImageNext';
+import ImageNext from '../ImageNext';
 
 export default function product({ product }) {
   console.log(product);

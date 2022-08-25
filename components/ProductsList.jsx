@@ -9,9 +9,15 @@ const ProductsList = ({ products }) => {
         <h1>PRODUCTS</h1>
         {products.data.map((_product) => (
           <div key={_product.id}>
+            {/* <Link
+              href='/products/[slug]'
+              as={`/products/${_product.attributes.slug}`}
+            > */}
             <Link
-              href='/products/[id]'
-              as={`/products/${_product.id}`}
+              href={{
+                pathname: '/products/[slug]',
+                query: { slug: _product.attributes.slug },
+              }}
             >
               <a>{_product.attributes.slug}</a>
             </Link>
