@@ -27,7 +27,6 @@ export async function getStaticProps({ params }) {
   const bookings = await getBookings(params);
   const products = await getProducts(params);
   const images = await getImages(params);
-  const slug = await getProductsSlug(params);
 
   return {
     props: {

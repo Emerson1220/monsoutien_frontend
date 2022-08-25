@@ -29,7 +29,6 @@ export async function getBookings() {
 
 // FETCH GET PRODUCT
 export async function getProducts() {
-  // const products = await fetchGetAPI('/products');
   const products = await fetchGetAPI('/products?populate=*');
   return products;
 }
@@ -38,13 +37,14 @@ export async function getProductsId(id) {
   const productsId = await fetchGetAPI(
     `/products/${id}?populate=%2A`
   );
-  // const productsId = await fetchGetAPI(`/products/id`);
-  // console.log(productsId.data);
   return productsId;
 }
 export async function getProductsSlug(slug) {
-  const productsSlug = await fetchGetAPI(`/products?slug=${slug}`);
-  return productsSlug;
+  const productsSlug = await fetchGetAPI(
+    // `/products?filters[slug][$eq]=${slug}`
+    `/products?populate[image][sort][0]=name%3Aasc&populate[slug][filters][name][$eq]=${slug}`
+  );
+  return productsSlug.data[0];
 }
 
 // FETCH GET IMAGES
