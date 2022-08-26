@@ -4,39 +4,21 @@ import {
   useElements,
   CardElement,
 } from '@stripe/react-stripe-js';
+import styled from 'styled-components';
+///CSS
+const Wrapper = styled.section`
+  padding: 4em;
+  background: papayawhip;
+  width: 50%;
+  margin: auto;
+`;
 
-// import useResponsiveFontSize from '../../useResponsiveFontSize';
-
-// const useOptions = () => {
-//   const fontSize = useResponsiveFontSize();
-//   const options = useMemo(
-//     () => ({
-//       style: {
-//         base: {
-//           fontSize,
-//           color: '#424770',
-//           letterSpacing: '0.025em',
-//           fontFamily: 'Source Code Pro, monospace',
-//           '::placeholder': {
-//             color: '#aab7c4',
-//           },
-//         },
-//         invalid: {
-//           color: '#9e2146',
-//         },
-//       },
-//     }),
-//     [fontSize]
-//   );
-
-//   return options;
-// };
-
+//COMPONENT
 const CardForm = () => {
   <h1>stripe payement</h1>;
   const stripe = useStripe();
   const elements = useElements();
-  const options = useOptions();
+  //   const options = useOptions();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -56,12 +38,12 @@ const CardForm = () => {
   };
 
   return (
-    <>
+    <Wrapper>
       <form onSubmit={handleSubmit}>
         <label>
           Card details
           <CardElement
-            options={options}
+            // options={options}
             onReady={() => {
               console.log('CardElement [ready]');
             }}
@@ -80,7 +62,7 @@ const CardForm = () => {
           Pay
         </button>
       </form>
-    </>
+    </Wrapper>
   );
 };
 

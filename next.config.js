@@ -4,7 +4,9 @@ const nextConfig = {
   swcMinify: true,
 };
 
-const securityHeaders = [];
+const ContentSecurityPolicy = `
+script-src 'self' https://js.stripe.com/
+`;
 
 // module.exports = nextConfig
 
@@ -12,15 +14,22 @@ module.exports = {
   reactStrictMode: true,
 
   //Problème Stripe securriity
-  // async headers() {
-  //   return [
-  //     {
-  //       // Apply these headers to all routes in your application.
-  //       source: '/:path*',
-  //       headers: securityHeaders,
-  //     },
-  //   ];
-  // },
+  async headers() {
+    return [
+      {
+        source: '/',
+        headers: [
+          {
+            key: 'Content-Security-Policy',
+            value: ContentSecurityPolicy.replace(
+              /\s{2,}/g,
+              ' '
+            ).trim(),
+          },
+        ],
+      },
+    ];
+  },
 
   //Essai Stripe
   env: {
