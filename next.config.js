@@ -1,35 +1,15 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
-  swcMinify: true,
-};
-
-const ContentSecurityPolicy = `
-script-src 'self' https://js.stripe.com/
-`;
-
+// const nextConfig = {
+//   reactStrictMode: true,
+//   swcMinify: true,
+// };
 // module.exports = nextConfig
+
+//SCSS
+// const path = require('path');
 
 module.exports = {
   reactStrictMode: true,
-
-  //Problème Stripe securriity
-  async headers() {
-    return [
-      {
-        source: '/',
-        headers: [
-          {
-            key: 'Content-Security-Policy',
-            value: ContentSecurityPolicy.replace(
-              /\s{2,}/g,
-              ' '
-            ).trim(),
-          },
-        ],
-      },
-    ];
-  },
 
   //Essai Stripe
   env: {
@@ -40,4 +20,7 @@ module.exports = {
     loader: 'default',
     domains: ['localhost'],
   },
+  // sassOptions: {
+  //   includePaths: [path.join(__dirname, 'app/styles')],
+  // },
 };

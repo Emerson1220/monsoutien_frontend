@@ -1,4 +1,4 @@
-import '../styles/globals.css';
+import '../styles/main.scss';
 
 //StripeEssai
 import { Elements } from '@stripe/react-stripe-js';

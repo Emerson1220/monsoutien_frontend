@@ -2,9 +2,12 @@ import React from 'react';
 import { getProductsSlug, getProducts } from '../../utils/api';
 import ImageNext from '../../components/ImageNext';
 
+//STYLE
+import styles from '../../styles/pages/Products.module.scss';
+
 export default function product({ product }) {
   return (
-    <div>
+    <div className={styles.products}>
       <h1>{product.attributes.title}</h1>
       <p>{product.attributes.description}</p>
       <ImageNext
@@ -28,6 +31,7 @@ export async function getStaticPaths() {
   //   );
   //   const products = await res.json();
 
+  // Fetch Axios
   const paths = products.data.map((product) => ({
     params: { slug: product.attributes.slug },
   }));
@@ -43,13 +47,12 @@ export async function getStaticProps({ params }) {
   const data = await getProductsSlug(slug);
 
   // Fetch without axios
-  //   const res = await fetch(
-  //     // `http://localhost:1337/api/products?fields[0]=slug&fields[0]=slug`
-  //     `http://localhost:1337/api/products?filters[slug][$eq]=${slug}`
-  //   );
-  //   const data = await res.json();
+  // const res = await fetch(
+  //   `http://localhost:1337/api/products?populate[image][sort][0]=name&[filters][slug][$eq]=${slug}`
+  // );
+  // const data = await res.json();
 
-  const product = data;
+  const product = data.data[0];
 
   return {
     props: { product },

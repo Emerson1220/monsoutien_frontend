@@ -7,16 +7,18 @@ import PostInfo from '../components/PostInfo';
 import DataPickers from '../components/DataPickers';
 import ProductsList from '../components/ProductsList';
 import CardSection from '../components/CardSection';
+import ProductCard from '../components/ProductCard';
 
 const EssaiPage = ({ bookings, images, products }) => {
   return (
     <div>
       <h1>Essai Page</h1>
-      {/* <BookingListComponents bookings={bookings} />
-      <PostInfo />
-      <DataPickers />
-      <ProductsList products={products} images={images} /> */}
-      <CardSection />
+      {/* <BookingListComponents bookings={bookings} /> */}
+      {/* <PostInfo /> */}
+      {/* <DataPickers /> */}
+      <ProductsList products={products} images={images} />
+      {/* <CardSection /> */}
+      {/* <ProductCard /> */}
     </div>
   );
 };

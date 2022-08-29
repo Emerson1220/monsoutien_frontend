@@ -41,10 +41,9 @@ export async function getProductsId(id) {
 }
 export async function getProductsSlug(slug) {
   const productsSlug = await fetchGetAPI(
-    // `/products?filters[slug][$eq]=${slug}`
-    `/products?populate[image][sort][0]=name%3Aasc&populate[slug][filters][name][$eq]=${slug}`
+    `/products?populate[image][sort][0]=name&[filters][slug][$eq]=${slug}`
   );
-  return productsSlug.data[0];
+  return productsSlug;
 }
 
 // FETCH GET IMAGES

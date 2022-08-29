@@ -6,9 +6,12 @@ const ImageNext = ({ url, width, height, alternativeText }) => {
     <NextImage
       layout='responsive'
       src={getStrapiMedia(url)}
-      objectFit='contain'
-      width={width}
-      height={height}
+      objectFit='cover'
+      // width={width}
+      // height={height}
+
+      width={600}
+      height={800}
       alt={alternativeText || ''}
       quality={75}
       // loading='lazy'

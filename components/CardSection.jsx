@@ -4,14 +4,6 @@ import {
   useElements,
   CardElement,
 } from '@stripe/react-stripe-js';
-import styled from 'styled-components';
-///CSS
-const Wrapper = styled.section`
-  padding: 4em;
-  background: papayawhip;
-  width: 50%;
-  margin: auto;
-`;
 
 //COMPONENT
 const CardForm = () => {
@@ -38,7 +30,7 @@ const CardForm = () => {
   };
 
   return (
-    <Wrapper>
+    <>
       <form onSubmit={handleSubmit}>
         <label>
           Card details
@@ -59,10 +51,10 @@ const CardForm = () => {
           />
         </label>
         <button type='submit' disabled={!stripe}>
-          Pay
+          Payer
         </button>
       </form>
-    </Wrapper>
+    </>
   );
 };
 
