@@ -1,6 +1,7 @@
 import React from 'react';
 import ImageNext from './ImageNext';
 import Link from 'next/link';
+import { MDXProvider } from '@mdx-js/react';
 
 //style
 import styles from '../styles/components/CardProduct.module.scss';
@@ -27,11 +28,11 @@ const CardProduct = ({ _product }) => {
           <a>{_product.attributes.slug}</a>
         </Link>
 
-        <div>
-          <h4>{_product.attributes.title}</h4>
-          <h4>{_product.attributes.price}</h4>
-          <h4>{_product.attributes.description}</h4>
-        </div>
+        <h4>{_product.attributes.title}</h4>
+        <h4>Prix: {_product.attributes.price}€</h4>
+        <MDXProvider>
+          <p>{_product.attributes.description}</p>
+        </MDXProvider>
       </div>
     </div>
   );

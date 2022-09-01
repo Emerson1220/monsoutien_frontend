@@ -8,16 +8,18 @@ import styles from '../../styles/pages/Products.module.scss';
 export default function product({ product }) {
   return (
     <div className={styles.products}>
-      <h1>{product.attributes.title}</h1>
-      <p>{product.attributes.description}</p>
-      <ImageNext
-        width={product.attributes.image.data.attributes.width}
-        height={product.attributes.image.data.attributes.height}
-        alternativeText={
-          product.attributes.image.data.attributes.alternativeText
-        }
-        url={product.attributes.image.data.attributes.url}
-      />
+      <div className=''>
+        <h1>{product.attributes.title}</h1>
+        <p>{product.attributes.description}</p>
+        <ImageNext
+          width={product.attributes.image.data.attributes.width}
+          height={product.attributes.image.data.attributes.height}
+          alternativeText={
+            product.attributes.image.data.attributes.alternativeText
+          }
+          url={product.attributes.image.data.attributes.url}
+        />
+      </div>
     </div>
   );
 }
