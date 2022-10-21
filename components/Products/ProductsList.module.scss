@@ -1,0 +1,14 @@
+.productList {
+  .cardSection {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
+@media (min-width: 768px) {
+  .productList {
+    // flex-direction: row;
+    // flex-wrap: wrap;
+  }
+}

@@ -1,17 +1,22 @@
 import '../styles/main.scss';
+import 'antd/dist/antd.css';
 
-//StripeEssai
+//Auth
+import { SessionProvider } from 'next-auth/react';
+
+//Stripe
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 
-const stripePromise = loadStripe(
-  process.env.STRIPE_PUBLISHABLE_API_KEY
-);
-function MyApp({ Component, pageProps }) {
+const stripePromise = loadStripe(`${process.env.STRIPE_SECRET_KEY}`);
+
+function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   return (
-    <Elements stripe={stripePromise}>
-      <Component {...pageProps} />
-    </Elements>
+    <SessionProvider session={session}>
+      <Elements stripe={stripePromise}>
+        <Component {...pageProps} />
+      </Elements>
+    </SessionProvider>
   );
 }
 

@@ -1,0 +1,69 @@
+@use 'styles/theme' as *;
+
+.cardProduct {
+  width: auto;
+  background-color: white;
+  margin: 1em;
+  border-radius: 10px;
+  @include shadowCard;
+
+  img {
+    border-radius: 10px 10px 0 0;
+  }
+
+  .cardLikes {
+    position: relative;
+    width: 80%;
+    display: flex;
+    // display: grid;
+    // grid-template-columns: 1fr 2fr;
+    background-color: rgba(255, 255, 255, 0.796);
+    border-radius: 20px 0px 0px 20px;
+    padding: 0.3em;
+    margin: -3.5em 0em 1em auto;
+
+    .icons {
+      color: $title;
+      margin: auto;
+      text-align: left;
+      border: 1px solid $title;
+      padding: 0.5em;
+      border-radius: 50%;
+    }
+    p {
+      margin: auto;
+      color: $title;
+    }
+  }
+
+  .contentCard {
+    padding: 1em;
+
+    a {
+      color: white;
+      background-color: $primary60;
+      padding: 0.3em;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: transform 0.8s; /* Animation */
+      &:hover {
+        background-color: red;
+        transform: scale(2.5);
+      }
+    }
+    p {
+      text-align: justify;
+      color: $paragraphe;
+      padding: 0.3em;
+    }
+    h4 {
+      padding: 0.3em;
+    }
+  }
+}
+
+@media (min-width: $tablet) {
+  .cardProduct {
+    max-width: 300px;
+  }
+}

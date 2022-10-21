@@ -1,12 +1,13 @@
 //style
-import styles from '../styles/components/ProductList.module.scss';
+import styles from './ProductsList.module.scss';
+
 //Components
-import CardProduct from '../components/CardProduct';
+import CardProduct from './CardProduct';
 
 const ProductsList = ({ products }) => {
   return (
     <div className={styles.productList}>
-      <div className='flex flex-wrap m-auto'>
+      <div className={styles.cardSection}>
         {products.data.map((_product) => (
           <CardProduct key={_product.id} _product={_product} />
         ))}

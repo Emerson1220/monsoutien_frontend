@@ -1,13 +1,14 @@
 //Utils
-import { getBookings, getProducts, getImages } from '../utils/api';
+import { getBookings, getProducts, getImages } from '../../utils/api';
 
 //Components
-import BookingListComponents from '../components/BookingListComponents';
-import PostInfo from '../components/PostInfo';
-import DataPickers from '../components/DataPickers';
-import ProductsList from '../components/ProductsList';
-import CardSection from '../components/CardSection';
-import ProductCard from '../components/ProductCard';
+import BookingListComponents from '../../components/BookingListComponents';
+import PostInfo from '../../components/PostInfo';
+import DataPickers from '../../components/DataPickers';
+import ProductsList from '../../components/Products/ProductsList';
+import CardSection from '../../components/CardSection';
+import ProductCard from '../../components/ProductCard';
+import CheckoutForm from '../../components/Stripe/CheckoutForm';
 
 const EssaiPage = ({ bookings, images, products }) => {
   return (
@@ -16,9 +17,10 @@ const EssaiPage = ({ bookings, images, products }) => {
       {/* <BookingListComponents bookings={bookings} /> */}
       {/* <PostInfo /> */}
       {/* <DataPickers /> */}
-      <ProductsList products={products} images={images} />
+      {/* <ProductsList products={products} images={images} /> */}
       {/* <CardSection /> */}
       {/* <ProductCard /> */}
+      <CheckoutForm />
     </div>
   );
 };

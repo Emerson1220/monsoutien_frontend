@@ -1,4 +1,4 @@
-import { getStrapiMedia } from '../lib/media';
+import { getStrapiMedia } from '../../lib/media';
 import NextImage from 'next/image';
 
 const ImageNext = ({ url, width, height, alternativeText }) => {
@@ -15,7 +15,7 @@ const ImageNext = ({ url, width, height, alternativeText }) => {
       alt={alternativeText || ''}
       quality={75}
       // loading='lazy'
-      priority
+      priority={true}
     />
   );
 };

@@ -1,10 +1,11 @@
-import React from 'react';
-import ImageNext from './ImageNext';
+//Libraries
+import ImageNext from '../Images/ImageNext';
 import Link from 'next/link';
 import { MDXProvider } from '@mdx-js/react';
 
-//style
-import styles from '../styles/components/CardProduct.module.scss';
+//Style
+import { LikeOutlined } from '@ant-design/icons';
+import styles from './CardProduct.module.scss';
 
 const CardProduct = ({ _product }) => {
   return (
@@ -18,6 +19,10 @@ const CardProduct = ({ _product }) => {
         }
         url={_product.attributes.image.data.attributes.url}
       />
+      <div className={styles.cardLikes}>
+        <LikeOutlined className={styles.icons} />
+        <p>93% De retour positif</p>
+      </div>
       <div className={styles.contentCard}>
         <Link
           href={{
