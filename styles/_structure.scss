@@ -1,0 +1,111 @@
+@use './theme' as *;
+
+/*|---------------| Texte |---------------*/
+@mixin titleLanding {
+  color: white;
+  @include font;
+  margin: 0;
+  line-height: 1.15;
+  font-size: 4rem;
+  font-weight: bold;
+  text-transform: capitalize;
+  text-align: center;
+}
+
+@mixin title {
+  color: $secondary30;
+  @include font;
+  margin: 0;
+  line-height: 1.15;
+  font-size: 4rem;
+  font-weight: bold;
+}
+
+@mixin subTitle {
+  color: $secondary30;
+  @include font;
+  margin: 0;
+  line-height: 1.15;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+@mixin description {
+  color: $paragraphe;
+  @include font;
+  margin: 0;
+  line-height: 1.5;
+  font-size: 1.3rem;
+  font-weight: 400;
+}
+
+@mixin margin-page {
+  width: calc(100% - 40px);
+  margin: 0 auto;
+}
+
+/*|---------------| Architecture |---------------*/
+@mixin container-component {
+  max-width: 1400px;
+  height: auto;
+  margin: auto;
+}
+
+@mixin grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 800px;
+}
+/*|---------------| Input |---------------*/
+
+@mixin input {
+}
+
+/*|---------------| Card |---------------*/
+@mixin card {
+  margin: 1rem;
+  text-align: left;
+  color: inherit;
+  text-decoration: none;
+  border: 1px solid #787676;
+  border-radius: 10px;
+  transition: color 0.15s ease, border-color 0.15s ease;
+  width: 300px;
+}
+
+@mixin shadowCard {
+  transition: all 0.4s ease-in-out;
+  box-shadow: 4px 6px 19px -4px rgba(156, 156, 156, 0.79);
+  -webkit-box-shadow: 4px 6px 19px -4px rgba(156, 156, 156, 0.79);
+  -moz-box-shadow: 4px 6px 19px -4px rgba(156, 156, 156, 0.79);
+}
+
+@mixin hoverCardEffect {
+  transform: scale(1.1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+@mixin afterCardEffect {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/*|---------------| Mediaquery |---------------*/
+@media (max-width: 600px) {
+  .grid {
+    width: 100%;
+    flex-direction: column;
+  }
+}
+@mixin flex_colum {
+  min-height: 100vh;
+  padding: 0 1em;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

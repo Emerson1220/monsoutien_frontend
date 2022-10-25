@@ -1,37 +1,21 @@
 /*|---------------| App Color Schema|---------------*/
+//Title
 $primary60: #fc9f1c;
 $secondary30: #2ec7b9;
 $additoinal10: #fefde3;
 $title: #114450;
 $paragraphe: grey;
 
-/*|---------------| Button global |---------------*/
+//NavBar
+$bgNavBar: #2ec7b9;
+$clrNavItems: white;
 
-/*|---------------| Tile |---------------*/
+//Footer
+$bgFooter: #114450;
 
 /*|---------------| BreakPoint|---------------*/
-
 $desktop4k: 1800px;
 $desktop: 1280px;
 $tabletLand: 975px;
 $tablet: 768px;
 $mobil: 480px;
-
-/*|---------------| Mixin Effect|---------------*/
-@mixin shadowCard {
-  box-shadow: 6px 5px 17px 2px rgba(161, 161, 161, 0.57);
-  -webkit-box-shadow: 6px 5px 17px 2px rgba(161, 161, 161, 0.57);
-  -moz-box-shadow: 6px 5px 17px 2px rgba(161, 161, 161, 0.57);
-}
-
-/*|---------------|Mixin Margin|---------------*/
-@mixin margin-page {
-  width: calc(100% - 40px);
-  margin: 0 auto;
-}
-@mixin padding-section {
-  padding: 4em 0;
-  margin: 0 auto;
-}
-
-/*|---------------|Button, Tags|---------------*/

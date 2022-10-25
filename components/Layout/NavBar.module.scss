@@ -1,0 +1,17 @@
+@use '../../styles/theme' as *;
+
+.NavBar {
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  padding: 1.4em;
+  justify-content: flex-start;
+  align-items: center;
+  background: $bgNavBar;
+
+  a {
+    font-size: 1.4em;
+    margin: 1em;
+    color: $clrNavItems;
+  }
+}

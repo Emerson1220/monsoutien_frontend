@@ -8,13 +8,18 @@ import { SessionProvider } from 'next-auth/react';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 
+//Components
+import Container from '../components/Layout/Container';
+
 const stripePromise = loadStripe(`${process.env.STRIPE_SECRET_KEY}`);
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   return (
     <SessionProvider session={session}>
       <Elements stripe={stripePromise}>
-        <Component {...pageProps} />
+        <Container>
+          <Component {...pageProps} />
+        </Container>
       </Elements>
     </SessionProvider>
   );

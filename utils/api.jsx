@@ -52,6 +52,12 @@ export async function getImages() {
   return images;
 }
 
+// FETCH GET IMAGES
+export async function getUsers() {
+  const users = await fetchGetAPI('/users');
+  return users;
+}
+
 // export async function getCategory(slug) {
 //   const categories = await fetchAPI(`/categories?slug=${slug}`);
 //   return categories?.[0];

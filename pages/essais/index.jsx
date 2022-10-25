@@ -20,7 +20,7 @@ const EssaiPage = ({ bookings, images, products }) => {
       {/* <ProductsList products={products} images={images} /> */}
       {/* <CardSection /> */}
       {/* <ProductCard /> */}
-      <CheckoutForm />
+      {/* <CheckoutForm /> */}
     </div>
   );
 };

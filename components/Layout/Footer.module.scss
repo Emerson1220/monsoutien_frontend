@@ -1,0 +1,9 @@
+@use '../../styles/theme' as *;
+
+.Footer {
+  position: fixed;
+  width: 100vw;
+  bottom: 0;
+  padding: 1.4em;
+  background: $bgFooter;
+}
