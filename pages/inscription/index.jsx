@@ -1,10 +1,20 @@
 //Librairie
 import { useForm } from 'react-hook-form';
+import { useState } from 'react';
+import axios from 'axios';
 
 //Styles
 import style from './Inscription.module.scss';
 
 export default function Index() {
+  //Etat
+  const [modifiedData, setModifiedData] = useState({
+    pseudo: '',
+    email: '',
+    passeword: '',
+  });
+  //   const [errorRestaurants, setErrorRestaurants] = useState(null);
+
   //Variables
   const onSubmit = (data) => console.log(data);
   const {
@@ -26,6 +36,20 @@ export default function Index() {
         className={style.form}
         onSubmit={handleSubmit(onFormSubmitHandler)}
       >
+        <div className={style.inputContainer}>
+          {' '}
+          <input
+            type='text'
+            placeholder='Pseudo'
+            className={style.input}
+            {...register('pseudo', {
+              required: true,
+            })}
+          />
+          {errors.email && errors.email.type === 'required' && (
+            <span>Veuillez renseigner ce champ</span>
+          )}
+        </div>
         <div className={style.inputContainer}>
           {' '}
           <input

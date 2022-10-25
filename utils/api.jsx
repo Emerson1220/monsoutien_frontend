@@ -21,6 +21,18 @@ export async function fetchGetAPI(path) {
   }
 }
 
+// POSTAPI FUNCTION
+export async function fetchPostAPI(path) {
+  try {
+    const response = await axios.post(requestUrl, {
+      data: modifiedData,
+    });
+    console.log(response);
+  } catch (error) {
+    return error;
+  }
+}
+
 // FETCH GET BOOKING
 export async function getBookings() {
   const bookings = await fetchGetAPI('/bookings');
@@ -57,6 +69,8 @@ export async function getUsers() {
   const users = await fetchGetAPI('/users');
   return users;
 }
+
+// POST USERS
 
 // export async function getCategory(slug) {
 //   const categories = await fetchAPI(`/categories?slug=${slug}`);
