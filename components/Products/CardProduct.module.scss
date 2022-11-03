@@ -1,7 +1,11 @@
-@use 'styles/theme' as *;
+@use '../../styles/theme' as *;
+@use '../../styles/structure' as *;
 
 .cardProduct {
-  width: auto;
+  position: relative;
+  height: 100%;
+  width: 100%;
+
   background-color: white;
   margin: 1em;
   border-radius: 10px;
@@ -37,6 +41,9 @@
   }
 
   .contentCard {
+    width: inherit;
+    height: 600px;
+
     padding: 1em;
 
     a {
@@ -58,6 +65,11 @@
     }
     h4 {
       padding: 0.3em;
+    }
+    .button {
+      position: absolute;
+      bottom: 10px;
+      left: 25%;
     }
   }
 }

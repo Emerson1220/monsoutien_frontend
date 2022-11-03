@@ -3,6 +3,9 @@ import ImageNext from '../Images/ImageNext';
 import Link from 'next/link';
 import { MDXProvider } from '@mdx-js/react';
 
+//Components
+import BtnStandard from '../Btn/BtnStandard';
+
 //Style
 import { LikeOutlined } from '@ant-design/icons';
 import styles from './CardProduct.module.scss';
@@ -32,13 +35,15 @@ const CardProduct = ({ _product }) => {
         >
           <a>{_product.attributes.slug}</a>
         </Link>
-
         <h4>{_product.attributes.title}</h4>
         <h4>Prix: {_product.attributes.price}€</h4>
         <MDXProvider>
           <p>{_product.attributes.description}</p>
-        </MDXProvider>
-      </div>
+        </MDXProvider>{' '}
+        <div className={styles.button}>
+          <BtnStandard btnText='Voir le produit' />
+        </div>
+      </div>{' '}
     </div>
   );
 };

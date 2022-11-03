@@ -7,7 +7,8 @@ export function getStrapiURL(path) {
   }${path}`;
 }
 ////////////////////////////////////////////////////////////////
-// GET API FUNCTION
+// API FUNCTION
+////////////////////////////////////////////////////////////////
 export async function fetchGetAPI(path) {
   try {
     const requestUrl = getStrapiURL(path);
@@ -21,17 +22,9 @@ export async function fetchGetAPI(path) {
   }
 }
 
-// POSTAPI FUNCTION
-export async function fetchPostAPI(path) {
-  try {
-    const response = await axios.post(requestUrl, {
-      data: modifiedData,
-    });
-    console.log(response);
-  } catch (error) {
-    return error;
-  }
-}
+/////////////////////////////////
+// GET API FUNCTION
+////////////////////////////////
 
 // FETCH GET BOOKING
 export async function getBookings() {
@@ -69,20 +62,3 @@ export async function getUsers() {
   const users = await fetchGetAPI('/users');
   return users;
 }
-
-// POST USERS
-
-// export async function getCategory(slug) {
-//   const categories = await fetchAPI(`/categories?slug=${slug}`);
-//   return categories?.[0];
-// }
-
-// export async function getProducts() {
-//   const products = await fetchAPI('/products');
-//   return products;
-// }
-
-// export async function getProduct(slug) {
-//   const products = await fetchAPI(`/products?slug=${slug}`);
-//   return products?.[0];
-// }

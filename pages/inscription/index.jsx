@@ -1,61 +1,111 @@
-//Librairie
+import { useState, useEffect } from 'react';
+// import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
-import { useState } from 'react';
 import axios from 'axios';
+import Router from 'next/router';
+import PulseLoader from 'react-spinners/PulseLoader';
 
 //Styles
 import style from './Inscription.module.scss';
 
-export default function Index() {
-  //Etat
-  const [modifiedData, setModifiedData] = useState({
-    pseudo: '',
-    email: '',
-    passeword: '',
-  });
-  //   const [errorRestaurants, setErrorRestaurants] = useState(null);
+export default function Register() {
+  //State
+  const [isLoading, setIsLoading] = useState(false);
+  const [isRegistered, setIsRegistered] = useState(false);
+  const [error, setError] = useState();
 
   //Variables
-  const onSubmit = (data) => console.log(data);
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    username: '',
+    email: '',
+    password: '',
+  });
 
   //Méthode
-  const onFormSubmitHandler = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
+    //Si loading est true alors on change les etats
+    if (!isLoading) {
+      setIsLoading(true);
+      setError(null);
+
+      // Enoi le user avec l'API et on stock dans une variable -> reponse
+      axios
+        // .post('http://localhost:1337/api/auth/local/register', {
+
+        .post(process.env.API_LOCAL_REGISTER, {
+          username: data.username,
+          email: data.email,
+          password: data.password,
+        })
+
+        // En cas de réussite de la requête
+        .then((response) => {
+          //Informations
+          console.log('Well done!');
+          console.log(response.error);
+          console.log(response.status);
+          console.log(response.statusText);
+          console.log('User profile', response.data.user);
+          console.log('User token', response.data.jwt);
+
+          //Gestion des Etats
+          setIsRegistered(data.username);
+
+          //Redirection après connexion après 3 sec.
+          setTimeout(() => Router.push('/'), 3000);
+        })
+
+        // En cas d’échec de la requête
+        .catch((error) => {
+          //Informations
+          console.log('An error occurred:', error.response);
+          console.log(error.message);
+          console.log(error.details);
+
+          //Gestion des Etats
+          setError('Une erreur est survenue. Veuillez recommencer !');
+          setIsLoading(false);
+        })
+
+        // Dans tous les cas
+        .then((response) => {
+          setIsLoading(false);
+        });
+    }
   };
 
   return (
     <div className={style.signUp}>
-      <h1>inscription</h1>
-      <form
-        className={style.form}
-        onSubmit={handleSubmit(onFormSubmitHandler)}
-      >
+      {error && <p>{error}</p>}{' '}
+      {isRegistered && <p>Inscription réussie</p>}
+      <h1>Inscription</h1>
+      <form className={style.form} onSubmit={handleSubmit(onSubmit)}>
         <div className={style.inputContainer}>
-          {' '}
+          <label className={style.label} htmlFor='username'>
+            Username
+          </label>
           <input
-            type='text'
-            placeholder='Pseudo'
             className={style.input}
-            {...register('pseudo', {
+            type='text'
+            {...register('username', {
               required: true,
             })}
           />
-          {errors.email && errors.email.type === 'required' && (
+          {errors.username && errors.username.type === 'required' && (
             <span>Veuillez renseigner ce champ</span>
           )}
         </div>
         <div className={style.inputContainer}>
-          {' '}
+          <label className={style.label} htmlFor='email'>
+            Email
+          </label>
           <input
-            type='email'
-            placeholder='Adresse email'
             className={style.input}
+            type='email'
             {...register('email', {
               required: true,
               pattern:
@@ -66,16 +116,16 @@ export default function Index() {
             <span>Veuillez renseigner ce champ</span>
           )}
           {errors.email && errors.email.type === 'pattern' && (
-            <span>Votre adresse email n'est pas correct</span>
+            <span>Votre adresse email est incorrect</span>
           )}
         </div>
-
         <div className={style.inputContainer}>
-          {' '}
+          <label className={style.label} htmlFor='password'>
+            Password
+          </label>
           <input
-            type='password'
-            placeholder='Mot de passe'
             className={style.input}
+            type='password'
             {...register('password', {
               required: true,
             })}
@@ -85,10 +135,9 @@ export default function Index() {
           )}
         </div>
 
-        {errors.exampleRequired && (
-          <span>This field is required</span>
-        )}
-        <input type='submit' />
+        <button className={style.btn} type='submit'>
+          {isLoading ? <PulseLoader color='white' /> : "S'inscrire"}
+        </button>
       </form>
     </div>
   );
