@@ -3,6 +3,7 @@ import { useState } from 'react';
 
 //Components
 import NavItem from './NavItem';
+import BtnSign from '../Btn/BtnSign';
 
 //Styles
 import style from './NavBar.module.scss';
@@ -24,6 +25,7 @@ export default function NavBar() {
           <NavItem {...menu} />
         </div>
       ))}
+      <BtnSign />
     </nav>
   );
 }

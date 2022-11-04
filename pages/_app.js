@@ -1,3 +1,7 @@
+//Librairies
+import { SessionProvider } from 'next-auth/react';
+
+//Style
 import '../styles/main.scss';
 import 'antd/dist/antd.css';
 
@@ -11,18 +15,20 @@ import { loadStripe } from '@stripe/stripe-js';
 //Components
 import Container from '../components/Layout/Container';
 
-const stripePromise = loadStripe(
-  `${process.env.STRIPE_PUBLISHABLE_API_KEY}`
-);
+// const stripePromise = loadStripe(
+//   `${process.env.STRIPE_PUBLISHABLE_API_KEY}`
+// );
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   return (
     // <SessionProvider session={session}>
-    <Elements stripe={stripePromise}>
+    // <Elements stripe={stripePromise}>
+    <SessionProvider session={session}>
       <Container>
         <Component {...pageProps} />
       </Container>
-    </Elements>
+    </SessionProvider>
+    // </Elements>
     // </SessionProvider>
   );
 }

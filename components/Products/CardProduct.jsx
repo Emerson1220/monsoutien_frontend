@@ -41,7 +41,7 @@ const CardProduct = ({ _product }) => {
           <p>{_product.attributes.description}</p>
         </MDXProvider>{' '}
         <div className={styles.button}>
-          <BtnStandard btnText='Voir le produit' />
+          <BtnStandard btnText='En savoir +' />
         </div>
       </div>{' '}
     </div>

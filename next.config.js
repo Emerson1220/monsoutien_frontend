@@ -42,7 +42,8 @@ module.exports = withMDX({
     //Next config
     NEXTAUTH_SECRET: '<SECRET>',
     NEXTAUTH_URL: 'http://localhost:3000 ',
-    NEXT_PUBLIC_STRAPI_API_URL: '',
+    NEXT_PUBLIC_API_URL: 'http://localhost:1337',
+    NEXT_PUBLIC_DATABASE_URL=postgres://strapi:strapi@localhost:5432/strapi?synchronize=true,
 
     //Strapi config
     API_LOCAL_REGISTER:
